@@ -326,8 +326,8 @@ class Staff(Person):
 
 # Create instances of Flight, Passenger, and Staff
 flight = Flight("ABC123", "12:00 PM", "4:00 PM", FlightLocation.UAE, "Boeing 707")
-passenger = Passenger("Alice", "Smith", 25, "Female", "ID123", "USA", "123-456-7890", "123 Main St, City", "PASS123", "TICKET123", "A1", FlightLocation.UAE, "2024-03-01", Type.Economy, 2, "Vegetarian", "Gold", "Wheelchair", "None", priority_boarding=True)
-staff = Staff("John", "Doe", 30, "Male", "STAFF123", "USA", "987-654-3210", "456 Oak St, City", "EMP123", "Cabin Crew", "In-Flight Services", work_hours=50)
+passenger = Passenger("Rashed", "aljaaedi", 21, "male", "ID123", "Uae", "123-456-7890", "123 Main St, City", "PASS123", "TICKET123", "A1", FlightLocation.UAE, "2024-03-01", Type.Economy, 2, "Vegetarian", "Gold", "Wheelchair", "None", priority_boarding=True)
+staff = Staff("ahmed", "zayed", 30, "Male", "STAFF123", "USA", "987-654-3210", "456 Oak St, City", "EMP123", "Cabin Crew", "In-Flight Services", work_hours=50)
 
 # Set the flight reference for the passenger
 passenger.ticket.flight = flight
