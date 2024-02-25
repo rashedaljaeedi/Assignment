@@ -89,7 +89,7 @@ class Ticket:
         self.luggage_count = luggage_count
 
     #setters and getters 
-        def get_ticket_number(self):
+    def get_ticket_number(self):
         return self._ticket_number
 
     def set_ticket_number(self, ticket_number):
