@@ -1,0 +1,313 @@
+import enum
+
+class Type(enum.Enum):
+    Economy = 1
+    Business = 2
+    First = 3
+
+class FlightLocation(enum.Enum):
+    UAE = 9
+    UK = 8
+    KSA = 7
+    CHINA = 10
+    USA = 19
+
+class Person:
+    # Constructor to initialize a Person object with basic information
+    def __init__(self, First_name, Last_name, Age, Gender, ID, Nationality, contact_number, address):
+        self.First_name = First_name
+        self.Last_name = Last_name
+        self.Age = Age
+        self.Gender = Gender
+        self.ID = ID
+        self.Nationality = Nationality
+        self.contact_number = contact_number
+        self.address = address
+   #setters and gettings
+    def get_first_name(self):
+        return self._first_name
+
+    def set_first_name(self, first_name):
+        self._first_name = first_name
+
+    def get_last_name(self):
+        return self._last_name
+
+    def set_last_name(self, last_name):
+        self._last_name = last_name
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+    def get_gender(self):
+        return self._gender
+
+    def set_gender(self, gender):
+        self._gender = gender
+
+    def get_id(self):
+        return self._id
+
+    def set_id(self, id):
+        self._id = id
+
+    def get_nationality(self):
+        return self._nationality
+
+    def set_nationality(self, nationality):
+        self._nationality = nationality
+
+    def get_contact_number(self):
+        return self._contact_number
+
+    def set_contact_number(self, contact_number):
+        self._contact_number = contact_number
+
+    def get_address(self):
+        return self._address
+
+    def set_address(self, address):
+        self._address = address
+
+
+    # String representation of the person's information
+    def __str__(self):
+        return f"{self.First_name} {self.Last_name} ({self.ID}) - Age: {self.Age}, Gender: {self.Gender}, Nationality: {self.Nationality}, Contact: {self.contact_number}, Address: {self.address}"
+
+class Ticket:
+    # Constructor to initialize a Ticket object with ticket details
+    def __init__(self, ticket_number, seat_number, flight_location, date_of_flight, ticket_type, flight, luggage_count):
+        self.ticket_number = ticket_number
+        self.seat_number = seat_number
+        self.flight_location = flight_location
+        self.date_of_flight = date_of_flight
+        self.ticket_type = ticket_type
+        self.flight = flight  # Reference to associated Flight
+        self.luggage_count = luggage_count
+
+    #setters and getters 
+        def get_ticket_number(self):
+        return self._ticket_number
+
+    def set_ticket_number(self, ticket_number):
+        self._ticket_number = ticket_number
+
+    def get_seat_number(self):
+        return self._seat_number
+
+    def set_seat_number(self, seat_number):
+        self._seat_number = seat_number
+
+    def get_flight_location(self):
+        return self._flight_location
+
+    def set_flight_location(self, flight_location):
+        self._flight_location = flight_location
+
+    def get_date_of_flight(self):
+        return self._date_of_flight
+
+    def set_date_of_flight(self, date_of_flight):
+        self._date_of_flight = date_of_flight
+
+    def get_ticket_type(self):
+        return self._ticket_type
+
+    def set_ticket_type(self, ticket_type):
+        self._ticket_type = ticket_type
+
+    def get_flight(self):
+        return self._flight
+
+    def set_flight(self, flight):
+        self._flight = flight
+
+    def get_luggage_count(self):
+        return self._luggage_count
+
+    def set_luggage_count(self, luggage_count):
+        self._luggage_count = luggage_count
+
+    # Function to switch the seat type of the ticket
+    def switch_seat_type(self, new_ticket_type):
+        self.ticket_type = new_ticket_type
+
+    # Function to generate a boarding pass string
+    def generate_boarding_pass(self):
+        return f"Boarding Pass - {self.flight.flight_number} - Seat: {self.seat_number}, Type: {self.ticket_type}, Flight: {self.flight.flight_number}, Luggage Count: {self.luggage_count}"
+
+class Flight:
+    # Constructor to initialize a Flight object with flight details
+    def __init__(self, flight_number, departure_time, arrival_time, flight_location, airplane_type):
+        self.flight_number = flight_number
+        self.departure_time = departure_time
+        self.arrival_time = arrival_time
+        self.flight_location = flight_location
+        self.airplane_type = airplane_type
+        self.status = "On Time"  # Default status
+
+    #setters and getters 
+    def get_flight_number(self):
+        return self._flight_number
+
+    def set_flight_number(self, flight_number):
+        self._flight_number = flight_number
+
+    def get_departure_time(self):
+        return self._departure_time
+
+    def set_departure_time(self, departure_time):
+        self._departure_time = departure_time
+
+    def get_arrival_time(self):
+        return self._arrival_time
+
+    def set_arrival_time(self, arrival_time):
+        self._arrival_time = arrival_time
+
+    def get_flight_location(self):
+        return self._flight_location
+
+    def set_flight_location(self, flight_location):
+        self._flight_location = flight_location
+
+    def get_airplane_type(self):
+        return self._airplane_type
+
+    def set_airplane_type(self, airplane_type):
+        self._airplane_type = airplane_type
+
+    def get_status(self):
+        return self._status
+
+    def set_status(self, status):
+        self._status = status
+
+
+    # Function to update flight information
+    def update_flight_information(self, new_flight_number, new_departure_time, new_status):
+        self.flight_number = new_flight_number
+        self.departure_time = new_departure_time
+        self.status = new_status
+
+    # String representation of the flight information
+    def __str__(self):
+        return f"Flight {self.flight_number} - Departure: {self.departure_time}, Arrival: {self.arrival_time}, Location: {self.flight_location}, Status: {self.status}"
+
+class Passenger(Person):
+    # Constructor to initialize a Passenger object with additional details
+    def __init__(self, First_name, Last_name, Age, Gender, ID, Nationality, contact_number, address, passport_number, ticket_number, seat_number,
+                 flight_location, date_of_flight, ticket_type, luggage_count, food_preference=None, loyalty_status=None, special_assistance=None, dietary_restrictions=None, priority_boarding=False):
+        super().__init__(First_name, Last_name, Age, Gender, ID, Nationality, contact_number, address)
+        self.passport_number = passport_number
+        self.ticket= Ticket(ticket_number, seat_number, flight_location, date_of_flight, ticket_type, flight, luggage_count)
+        self.food_preference = food_preference
+        self.loyalty_status = loyalty_status
+        self.special_assistance = special_assistance
+        self.dietary_restrictions = dietary_restrictions
+        self.priority_boarding = priority_boarding
+    #setters and getters 
+    def get_passport_number(self):
+        return self._passport_number
+
+    def set_passport_number(self, passport_number):
+        self._passport_number = passport_number
+
+    def get_ticket(self):
+        return self._ticket
+
+    def set_ticket(self, ticket):
+        self._ticket = ticket
+
+    def get_food_preference(self):
+        return self._food_preference
+
+    def set_food_preference(self, food_preference):
+        self._food_preference = food_preference
+
+    def get_loyalty_status(self):
+        return self._loyalty_status
+
+    def set_loyalty_status(self, loyalty_status):
+        self._loyalty_status = loyalty_status
+
+    def get_special_assistance(self):
+        return self._special_assistance
+
+    def set_special_assistance(self, special_assistance):
+        self._special_assistance = special_assistance
+
+    def get_dietary_restrictions(self):
+        return self._dietary_restrictions
+
+    def set_dietary_restrictions(self, dietary_restrictions):
+        self._dietary_restrictions = dietary_restrictions
+
+    def get_priority_boarding(self):
+        return self._priority_boarding
+
+    def set_priority_boarding(self, priority_boarding):
+        self._priority_boarding = priority_boarding
+
+
+    # Function to update flight information for a passenger
+    def update_flight_information(self, new_flight_location, new_date_of_flight):
+        self.ticket.flight_location = new_flight_location
+        self.ticket.date_of_flight = new_date_of_flight
+
+    # Function to switch the seat type for a passenger
+    def switch_seat_type(self, new_ticket_type):
+        self.ticket.switch_seat_type(new_ticket_type)
+
+    # Function to generate a boarding pass string for a passenger
+    def generate_boarding_pass(self):
+        boarding_pass = f"Boarding Pass - {self.First_name} {self.Last_name} ({self.ID}) - Seat: {self.ticket.seat_number}, Type: {self.ticket.ticket_type}, Flight: {self.ticket.flight.flight_number}, Luggage Count: {self.ticket.luggage_count}"
+        if self.priority_boarding:
+            boarding_pass += " - Priority Boarding"
+        return boarding_pass
+
+    # String representation of the passenger's information
+    def __str__(self):
+        return f"{super().__str__()}, Passport: {self.passport_number}, Ticket: {self.ticket.ticket_number}, Seat: {self.ticket.seat_number}, Flight Location: {self.ticket.flight_location}, Date of Flight: {self.ticket.date_of_flight}, Type: {self.ticket.ticket_type}, Luggage Count: {self.ticket.luggage_count}, Food Preference: {self.food_preference}, Loyalty Status: {self.loyalty_status}, Special Assistance: {self.special_assistance}, Dietary Restrictions: {self.dietary_restrictions}, Priority Boarding: {self.priority_boarding}"
+
+class Staff(Person):
+    def __init__(self, First_name, Last_name, Age, Gender, ID, Nationality, contact_number, address, employee_id, position, department, performance_rating=None, work_hours=40):
+        super().__init__(First_name, Last_name, Age, Gender, ID, Nationality, contact_number, address)
+        self.employee_id = employee_id
+        self.position = position
+        self.department = department
+        self.performance_rating = performance_rating
+        self.work_hours = work_hours
+    #setters and getters
+    
+
+    def perform_security_check(self):
+        print(f"{self.First_name} {self.Last_name}  {self.employee_id}( is performing a security check.")
+
+    def announce_boarding(self):
+        print(f"{self.First_name} {self.Last_name}  {self.employee_id} (is announcing the boarding process.")
+
+    def rate_performance(self, rating):
+        self.performance_rating = rating
+
+# Example Usage:
+
+# Create instances of Flight, Passenger, and Staff
+flight = Flight("ABC123", "12:00 PM", "4:00 PM", FlightLocation.UAE, "Boeing 707")
+passenger = Passenger("Alice", "Smith", 25, "Female", "ID123", "USA", "123-456-7890", "123 Main St, City", "PASS123", "TICKET123", "A1", FlightLocation.UAE, "2024-03-01", Type.Economy, 2, "Vegetarian", "Gold", "Wheelchair", "None", priority_boarding=True)
+staff = Staff("John", "Doe", 30, "Male", "STAFF123", "USA", "987-654-3210", "456 Oak St, City", "EMP123", "Cabin Crew", "In-Flight Services", work_hours=50)
+
+# Set the flight reference for the passenger
+passenger.ticket.flight = flight
+# Print all user information and flight details
+print(passenger)
+print(staff)
+print(flight)
+
+
+# Generate boarding pass for the passenger
+boarding_pass = passenger.generate_boarding_pass()
+print(boarding_pass)
